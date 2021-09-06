@@ -1,0 +1,15 @@
+.sdf-login-page{
+    align-items: center;
+    .login-esp-white-div {
+        margin: 50px 0 0;
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .sdf-login-page{
+        .login-esp-white-div {
+            margin: 0;
+        }
+    }
+}

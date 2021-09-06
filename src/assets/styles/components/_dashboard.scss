@@ -1,0 +1,143 @@
+.sdf-general-dashboard{
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background-color: #F4F8FC;
+    padding-bottom: 1px;
+    .sdf-gd-sidebar{
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        position: fixed;
+        z-index: 2;
+        .sdf-gd-sb-inner{
+            width: 85%;
+            height: inherit;
+            min-height: 100vh;
+            background-color: white;
+            padding-top: 20px;
+            .sdf-gd-sbi-logo-div{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 40px;
+            }
+            .sdf-gd-sbi-user-div{
+                width: 240px;
+                height: 96px;
+                background-color: #e5e7ef;
+                margin: 0 auto 50px;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .sdf-gd-sbi-user-details{
+                    margin-left: 10px;
+                    h3{
+                        margin: 0 0 5px;
+                        font-style: normal;
+                        font-size: 16px;
+                        line-height: 16px;
+                    }
+                    p{
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 12px;
+                        line-height: 12px;
+                        margin: 0;
+                    }
+                }
+            }
+            .sdf-gd-sbi-nav-links{
+                width: 100%;
+                height: calc(100vh - 300px);
+                margin: auto;
+                overflow: auto;
+                .sbi-nav-link{
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 30px;
+                    cursor: pointer;
+                    span{
+                        margin-left: 10px;
+                    }
+                }
+                .sbi-nav-main-link{
+                    background-color: #f0f9fb;
+                    border-right: 2px solid #6DC5DB;
+                }
+            }
+        }
+    }
+    .sidebar-closed{
+        transform: translate(-100vw, 0);
+    }
+    .sidebar-open{
+        transform: translate(0, 0);
+        background-color: #c6c6c699;
+    }
+    .sdf-gd-content-container{
+        nav{
+            width: 100%;
+            height: 60px;
+            background-color: #F8F9FF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            .sdf-nav-menu{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .sdf-general-dashboard{
+        .sdf-gd-sidebar{
+            .sdf-gd-sb-inner{
+                max-width: 259px;
+            }
+        }
+        .sidebar-closed{
+            
+        }
+        .sidebar-open{
+            
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .sdf-general-dashboard{
+        .sdf-gd-sidebar{
+            width: 100%;
+            max-width: 259px;
+            .sdf-gd-sb-inner{
+                width: 100%;
+            }
+        }
+        .sidebar-closed{
+            transform: translate(0, 0);
+        }
+        .sidebar-open{
+            transform: translate(0, 0);
+        }
+        .sdf-gd-content-container{
+            margin-left: 259px;
+            nav{
+                justify-content: flex-end;
+                .sdf-nav-menu{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    
+}

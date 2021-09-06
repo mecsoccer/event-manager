@@ -1,0 +1,69 @@
+.dashboard-home-page{
+    padding: 0 25px;
+    .dhp-title-p{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 16px;
+    }
+    .dhp-welcome-banner{
+        background-color: #6DC5DB;
+        height: auto;
+        width: 100%;
+        border-radius: 4px;
+        color: #ffffff;
+        padding: 30px;
+        margin-bottom: 40px;
+        h3{
+            margin: 0 0 5px;
+            font-size: 25px;
+        }
+        p{
+            margin: 0 0 40px;
+        }
+    }
+    .dhp-below-banner-div{
+        width: 100%;
+        height: 180px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        margin-bottom: 40px;
+        box-shadow: 5px 10px 10px rgba(0, 11, 43, 0.051);
+    }
+    .dhp-bottom-flex-div{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .dashboard-home-page{
+        .dhp-title-p{
+            
+        }
+        .dhp-welcome-banner{
+            padding: 35px 65px;
+            background-image: url(../../../assets/images/dhp-banner-bkg.png);
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: contain;
+            h3{
+                font-size: 35px;
+                line-height: 35px;
+            }
+        }
+        .dhp-bottom-flex-div{
+            display: flex;
+            flex-wrap: wrap;
+            //justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+@media screen and (min-width: 1500px) {
+
+}
