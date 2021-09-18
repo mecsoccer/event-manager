@@ -14,7 +14,7 @@ import { checkLoggedIn, getUserProfile, logout } from "../utils/auth";
 import { Button } from "@material-ui/core";
 import { ROUTES } from "../constants/routes";
 
-const Dashboard = (props) => {
+const Dashboard: React.FC = (props) => {
   const history = useHistory();
   const [barOpen, setBarOpen] = useState(false);
   const [mainLink, setMainLink] = useState(1);
@@ -34,11 +34,14 @@ const Dashboard = (props) => {
   ];
 
   const user = getUserProfile();
-  if (!user) return window.location.assign(ROUTES.login);
+  if (!user) {
+    window.location.assign(ROUTES.login);
+    return null;
+  }
 
   const { firstName, lastName, email } = getUserProfile();
 
-  const events = JSON.parse(localStorage.getItem('events')) || {};
+  const events = JSON.parse(localStorage.getItem('events') || '') || {};
   const userEvents = events[email] || [];
 
   return (
@@ -87,7 +90,7 @@ const Dashboard = (props) => {
             </Badge>
             <Button
               style={{marginLeft:20}}
-              onClick={() => logout(history)}
+              onClick={logout}
             >sign out</Button>
           </div>
         </nav>

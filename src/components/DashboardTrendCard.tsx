@@ -1,13 +1,19 @@
 import React from 'react';
-//import { ReactComponent as TrendUp } from "../assets/images/trending-up.svg";
-//import { ReactComponent as TrendDown } from "../assets/images/trending-down.svg";
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { deleteCreatedEvent } from '../utils/events';
 
-const DashboardTrendCard = ({ name, startDate, reload, setReload }) => {
+interface Props {
+  name: string,
+  startDate: Date,
+  endDate: Date,
+  reload: boolean,
+  setReload: React.Dispatch<React.SetStateAction<boolean>>, 
+}
+
+const DashboardTrendCard: React.FC<Props> = ({ name, startDate, reload, setReload }) => {
   return (
-    <div className={`dhp-bottom-flex-item`} >
+    <div className="bg-red-600 dhp-bottom-flex-item" >
       <p>{name}</p>
       <div className="dhp-trend-circle-div">
         <p>{(new Date(startDate)).toLocaleDateString()}</p>

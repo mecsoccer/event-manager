@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function CircularIndeterminate(props) {
+const CircularIndeterminate: React.FC = (props) => {
   const classes = useStyles();
 
   const { state } = useContext(store);

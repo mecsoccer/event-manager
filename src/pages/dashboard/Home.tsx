@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { RouteComponentProps } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { ROUTES } from "../../constants/routes";
@@ -6,11 +7,17 @@ import DashboardTrendCard from "../../components/DashboardTrendCard";
 import { getUserProfile } from "../../utils/auth";
 import { getUserEvents } from "../../utils/events";
 
-const Home = () => {
+interface SingleEvent {
+  name: string,
+  startDate: Date,
+  endDate: Date,
+}
+
+const Home: React.FunctionComponent<RouteComponentProps> = (props) => {
   const { firstName } = getUserProfile();
 
-  const [reload, setReload] = useState(false);
-  const [events, setEvents] = useState([]);
+  const [reload, setReload] = useState<boolean>(false);
+  const [events, setEvents] = useState<Array<SingleEvent>>([]);
 
   useEffect(() => {
     setEvents(getUserEvents());
@@ -32,12 +39,14 @@ const Home = () => {
         </ColorButton>
       </div>
       <div className="dhp-bottom-flex-div">
-        {events.map((item) => {
+        {events.map((item, idx) => {
+          const { name, startDate, endDate } = item;
           return (
             <DashboardTrendCard
-              name={item.name}
-              startDate={item.startDate}
-              endDate={item.endDate}
+              key={idx}
+              name={name}
+              startDate={startDate}
+              endDate={endDate}
               reload={reload}
               setReload={setReload}
             />

@@ -1,12 +1,8 @@
 import React, { useContext } from 'react';
-import Snackbar from '@material-ui/core/Snackbar';
+import { Snackbar, SnackbarCloseReason } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import { store } from '../../global-store/popupContext';
-
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,17 +13,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function CustomizedSnackbars() {
+const CustomizedSnackbars: React.FC = (props) => {
   const { state, dispatch } = useContext(store);
 
   const classes = useStyles();
-  const { open, type, duration, message } = state.alert;
+  const { open, duration, message } = state.alert;
+  
+  const type = state.alert.type
 
-  const setOpen = (status) => {
-    dispatch({ type: 'DISPLAY_ALERT', payload: { open: status, type, duration, message } });
+  const setOpen = (status: boolean) => {
+    if (dispatch)
+      dispatch({ type: 'DISPLAY_ALERT', payload: { open: status, type, duration, message } });
   };
 
-  const handleClose = (event, reason) => {
+  const handleClose = (event: React.SyntheticEvent<any, Event>, reason: SnackbarCloseReason) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -37,10 +36,19 @@ function CustomizedSnackbars() {
 
   return (
     <div className={classes.root}>
-      <Snackbar open={open} anchorOrigin={{horizontal:'center',vertical:'top'}} autoHideDuration={duration} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={type}>
+      <Snackbar
+        open={open}
+        anchorOrigin={{horizontal:'center',vertical:'top'}}
+        autoHideDuration={duration}
+        onClose={handleClose}
+      >
+        <MuiAlert
+          elevation={6}
+          variant="filled"
+          severity={type}
+        >
           {message}
-        </Alert>
+        </MuiAlert>
       </Snackbar>
       {/*<Alert severity="error">This is an error message!</Alert>
       <Alert severity="warning">This is a warning message!</Alert>

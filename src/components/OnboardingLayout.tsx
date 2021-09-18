@@ -5,7 +5,11 @@ import BkgImage from "../assets/images/components/onboarding/sdf-onboarding-img.
 import tbhLogo from "../assets/images/TBH-logo.png";
 import { ROUTES } from "../constants/routes";
 
-function OnboardingLayout(props) {
+interface Props {
+  classStyle?: object
+}
+
+const OnboardingLayout: React.FC<Props> = (props) => {
   const classes = useStyles();
   const history = useHistory();
 

@@ -9,7 +9,7 @@ import Home from './pages/dashboard/Home';
 import Index from './pages/onboarding/Index';
 import LoginPage from './pages/auth/Login';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
       <Router>

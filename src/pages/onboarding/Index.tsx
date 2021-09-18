@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { Button, TextField, withStyles } from '@material-ui/core';
 import { handleFormInput, validate } from '../../utils/validations';
 import { ROUTES } from '../../constants/routes';
@@ -15,7 +16,7 @@ const initialValues = {
   //recurParam: { value: '', validation: true },
 };
 
-const Index = ({ history }) => {
+const Index: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const { dispatch } = useContext(store);
 
   const [formValues, setFormValues] = useState(initialValues);
@@ -28,18 +29,19 @@ const Index = ({ history }) => {
   const createEvent = () => {
     const events = getUserEvents();
     if (events.length >= 10) {
-      return displayAlertBar(
-        dispatch,
-        'error',
-        'Sorry cannot create any more events. Not more than 10 events allowed'
-      );
+      if (dispatch)
+        return displayAlertBar(
+          dispatch,
+          'error',
+          'Sorry cannot create any more events. Not more than 10 events allowed'
+        );
     }
     createNewEvent({
       name: formValues.name.value, 
       startDate: formValues.startDate.value,
       endDate: formValues.endDate.value,
     });
-    displayAlertBar(dispatch, 'success', 'Successfully created');
+    dispatch && displayAlertBar(dispatch, 'success', 'Successfully created');
     history.push(ROUTES.dashboardHome);
   };
 
@@ -75,7 +77,6 @@ const Index = ({ history }) => {
           value={formValues.startDate.value}
           error={!formValues.startDate.validation}
           onChange={(e) => {
-            console.log(e.target.value)
             handleFormInput('startDate', e.target.value, /.+/gi, formValues, setFormValues)}
           }
         />

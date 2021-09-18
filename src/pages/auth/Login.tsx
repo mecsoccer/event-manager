@@ -1,6 +1,6 @@
-import React, { useState, useEffect, /*useContext*/ } from "react";
+import React, { useState, useEffect } from "react";
+import { RouteComponentProps } from 'react-router-dom';
 import { Button, TextField, withStyles } from '@material-ui/core';
-//import { store } from '../../global-store/popupContext';
 import tbhLogo from "../../assets/images/TBH-logo.png";
 import { ROUTES } from '../../constants/routes';
 import { validate, handleFormInput } from "../../utils/validations";
@@ -10,9 +10,7 @@ const initialValues = {
   password: { value: '', validation: true },
 };
 
-const LoginPage = (props) => {
-  //const { dispatch } = useContext(store);
-  
+const LoginPage: React.FunctionComponent<RouteComponentProps> = (props) => {
   const [formValues, setFormValues] = useState(initialValues);
   const [fadeBtn, setFadeBtn] = useState(true);
 
@@ -21,9 +19,7 @@ const LoginPage = (props) => {
   }, [formValues]);
 
   const submitForm = () => {
-    //dispatch({ type: 'DISPLAY_PAGE_LOADER', payload: { open: true }});
-
-    const usersObject = JSON.parse(localStorage.getItem('users'));
+    const usersObject = JSON.parse(localStorage.getItem('users') || '');
     const { users } = usersObject;
     const user = users[formValues.email.value];
     if (user) {
