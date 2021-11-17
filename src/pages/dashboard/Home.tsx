@@ -26,8 +26,8 @@ const Home: React.FunctionComponent<RouteComponentProps> = (props) => {
   return (
     <div className="dashboard-home-page">
       <p className="dhp-title-p">Dashboard</p>
-      <div className="dhp-welcome-banner">
-        <h3>Welcome {firstName}</h3>
+      <div /*className="dhp-welcome-banner"*/ className="bg-black rounded mb-10">
+        <h3 className="mb-1 text-2xl">Welcome {firstName}</h3>
         <p>Click the button below to create an event</p>
         <ColorButton
           variant="contained"
